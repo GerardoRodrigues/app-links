@@ -1,10 +1,14 @@
 import { Category } from "@/src/components/category";
 import { colors } from "@/src/styles/colors";
+import { caterogies } from "@/src/utils/categories";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Image, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
+import { Categories } from "@/src/components/categories";
 
 export default function Index() {
+  const categories = caterogies;
+  
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -14,9 +18,7 @@ export default function Index() {
         </TouchableOpacity>
       </View>
 
-      <Category name="React Native" icon="code" isSelected />
-
-      <Category name="Vídeo" icon="movie" isSelected={false} />
+      <Categories />
     </View>
   );
 }
