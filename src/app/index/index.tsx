@@ -1,14 +1,11 @@
-import { Category } from "@/src/components/category";
-import { colors } from "@/src/styles/colors";
-import { caterogies } from "@/src/utils/categories";
-import { MaterialIcons } from "@expo/vector-icons";
-import { Image, TouchableOpacity, View } from "react-native";
-import { styles } from "./styles";
 import { Categories } from "@/src/components/categories";
+import { Link } from "@/src/components/link";
+import { colors } from "@/src/styles/colors";
+import { MaterialIcons } from "@expo/vector-icons";
+import { FlatList, Image, TouchableOpacity, View } from "react-native";
+import { styles } from "./styles";
 
 export default function Index() {
-  const categories = caterogies;
-  
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -19,6 +16,23 @@ export default function Index() {
       </View>
 
       <Categories />
+
+      <FlatList
+        data={["1", "2", "3"]}
+        keyExtractor={(item) => item}
+        renderItem={() => (
+          <Link
+            name="Google"
+            url="https://google.com"
+            onDetails={() => {
+              console.log("details");
+            }}
+          />
+        )}
+        style={styles.links}
+        contentContainerStyle={styles.linkContent}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 }
