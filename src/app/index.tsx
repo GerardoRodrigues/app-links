@@ -4,6 +4,7 @@ import { Options } from "@/src/components/option";
 import { colors } from "@/src/styles/colors";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import { useState } from "react";
 import {
   FlatList,
   Image,
@@ -13,18 +14,21 @@ import {
   View,
 } from "react-native";
 import { styles } from "../styles/stylesIndexPage";
+import { caterogies } from "../utils/categories";
 
 export default function Index() {
+  const [category, setCategory] = useState(caterogies[0].name);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image source={require("@/src/assets/logo.png")} style={styles.logo} />
-        <TouchableOpacity onPress={() => router.back()}>
+        <TouchableOpacity onPress={() => router.navigate("/add")}>
           <MaterialIcons name="add" size={32} color={colors.green[300]} />
         </TouchableOpacity>
       </View>
 
-      <Categories />
+      <Categories selected={category} onChange={setCategory} />
 
       <FlatList
         data={["1", "2", "3"]}
