@@ -3,6 +3,7 @@ import { Link } from "@/src/components/link";
 import { Options } from "@/src/components/option";
 import { colors } from "@/src/styles/colors";
 import { MaterialIcons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import {
   FlatList,
   Image,
@@ -11,14 +12,14 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { styles } from "./styles";
+import { styles } from "../styles/stylesIndexPage";
 
 export default function Index() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image source={require("@/src/assets/logo.png")} style={styles.logo} />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.back()}>
           <MaterialIcons name="add" size={32} color={colors.green[300]} />
         </TouchableOpacity>
       </View>
@@ -42,7 +43,7 @@ export default function Index() {
         showsVerticalScrollIndicator={false}
       />
 
-      <Modal transparent visible>
+      <Modal transparent visible={false}>
         <View style={styles.modal}>
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
